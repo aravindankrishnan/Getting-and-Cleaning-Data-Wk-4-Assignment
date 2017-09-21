@@ -44,14 +44,14 @@ xtestnew <- xtest[c(562,563,1:561)]
 xtesttrainnew <- rbind(xtrainnew, xtestnew)
 
 ## Replace Activity column values by descriptions - ex: 1 to Standing etc
-xtesttrainnew$activity <- lookup(xtesttrainnew1$activity, actnames[,1:2])
+xtesttrainnew$activity <- lookup(xtesttrainnew$activity, actnames[,1:2])
 
 ## Filter for only columns which have mean() and std() - This is the 1st tidy data set with only mean() and std() variables
 xtesttrainnewstdmean <- xtesttrainnew[,grep("std()|\\bmean()\\b", names(xtesttrainnew), value = TRUE)]
 
 ## Again add Subject and Activity columns to the filtered std() and mean() dataset as they would have been eliminated in the regex
-xtesttrainnewstdmean$subject <- xtesttrainnew1$subject
-xtesttrainnewstdmean$activity <- xtesttrainnew1$activity
+xtesttrainnewstdmean$subject <- xtesttrainnew$subject
+xtesttrainnewstdmean$activity <- xtesttrainnew$activity
 
 
 ## Step 5 of question - to create second tidy data set
